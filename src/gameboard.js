@@ -11,6 +11,12 @@ class Gameboard {
             this.grid[y][x + i] = newShip
         }
     }
+
+    receiveAttack(x, y) {
+        if (this.grid[y][x] !== null) {
+            this.grid[y][x].hit()
+        }
+    }
 }
 
 

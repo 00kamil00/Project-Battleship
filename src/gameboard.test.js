@@ -1,4 +1,3 @@
-import { experiments } from "webpack";
 import { Gameboard } from "./gameboard.js";
 
 
@@ -14,4 +13,11 @@ test('a ship of length 3 occupies consecutive horizontal cells', () => {
     expect(board.grid[3][5]).not.toBeNull()
     expect(board.grid[3][6]).toBe(board.grid[3][5])
     expect(board.grid[3][7]).toBeNull()
+})
+
+test('a successful hit damages the ship', () => {
+    const board = new Gameboard()
+    board.placeShip(3, 0, 0)
+    board.receiveAttack(0, 0)
+    expect(board.grid[0][0].hits).toBe(1)
 })

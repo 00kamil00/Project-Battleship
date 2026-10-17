@@ -21,3 +21,10 @@ test('a successful hit damages the ship', () => {
     board.receiveAttack(0, 0)
     expect(board.grid[0][0].hits).toBe(1)
 })
+
+test('records the coordinates of a missed shot', () => {
+    const board = new Gameboard()
+    board.placeShip(3, 0, 0)
+    board.receiveAttack(5, 5)
+    expect(board.missedAttacks).toContainEqual([5, 5])
+})

@@ -7,7 +7,9 @@ class Gameboard {
 
     placeShip(length, x, y) {
         const newShip = new Ship(length)
-        this.grid[y][x] = newShip
+        for (let i = 0; i < length; i++) {
+            this.grid[y][x + i] = newShip
+        }
     }
 }
 

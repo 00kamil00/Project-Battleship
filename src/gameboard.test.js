@@ -28,3 +28,10 @@ test('records the coordinates of a missed shot', () => {
     board.receiveAttack(5, 5)
     expect(board.missedAttacks).toContainEqual([5, 5])
 })
+
+test('checks whether the ships have not yet been sunk', () => {
+    const board = new Gameboard()
+    board.placeShip(3, 0, 0)
+    board.placeShip(2, 5, 6)
+    expect(board.allShipsSunk()).toBe(false)
+})

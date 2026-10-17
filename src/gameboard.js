@@ -20,6 +20,10 @@ class Gameboard {
             this.missedAttacks.push([x, y])
         }
     }
+
+    allShipsSunk() {
+        return false
+    }
 }
 
 

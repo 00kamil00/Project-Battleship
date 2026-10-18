@@ -20,6 +20,12 @@ class Gameboard {
     }
 
     receiveAttack(x, y) {
+        const isAlreadyMissed = this.missedAttacks.some(attack => {
+            return attack[0] === x && attack[1] === y
+        })
+
+        if (isAlreadyMissed) return
+
         if (this.grid[y][x] !== null) {
             this.grid[y][x].hit()
         } else {

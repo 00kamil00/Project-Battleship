@@ -52,3 +52,10 @@ test('places a ship vertically', () => {
     expect(board.grid[2][0]).toBe(board.grid[0][0])
     expect(board.grid[3][0]).toBeNull()
 })
+
+test('double shot to the same spot', () => {
+    const board = new Gameboard()
+    board.receiveAttack(5, 5)
+    board.receiveAttack(5, 5)
+    expect(board.missedAttacks).toHaveLength(1)
+})

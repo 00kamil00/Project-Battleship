@@ -35,3 +35,11 @@ test('checks whether the ships have not yet been sunk', () => {
     board.placeShip(2, 5, 6)
     expect(board.allShipsSunk()).toBe(false)
 })
+
+test('returns true when all ships have been sunk', () => {
+    const board = new Gameboard()
+    board.placeShip(2, 4, 7)
+    board.receiveAttack(4, 7)
+    board.receiveAttack(5, 7)
+    expect(board.allShipsSunk()).toBe(true)
+})

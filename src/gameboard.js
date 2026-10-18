@@ -4,6 +4,7 @@ class Gameboard {
     constructor() {
         this.grid = Array.from({ length: 10 }, () => Array(10).fill(null))
         this.missedAttacks = []
+        this.ships = []
     }
 
     placeShip(length, x, y) {
@@ -11,6 +12,7 @@ class Gameboard {
         for (let i = 0; i < length; i++) {
             this.grid[y][x + i] = newShip
         }
+        this.ships.push(newShip)
     }
 
     receiveAttack(x, y) {
@@ -22,7 +24,12 @@ class Gameboard {
     }
 
     allShipsSunk() {
-        return false
+        for (const ship of this.ships) {
+            if (!ship.isSunk()) {
+                return false
+            }
+        }
+        return true
     }
 }
 

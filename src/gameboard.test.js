@@ -43,3 +43,12 @@ test('returns true when all ships have been sunk', () => {
     board.receiveAttack(5, 7)
     expect(board.allShipsSunk()).toBe(true)
 })
+
+test('places a ship vertically', () => {
+    const board = new Gameboard()
+    board.placeShip(3, 0, 0, 'vertical')
+    expect(board.grid[0][0]).not.toBeNull()
+    expect(board.grid[1][0]).toBe(board.grid[0][0])
+    expect(board.grid[2][0]).toBe(board.grid[0][0])
+    expect(board.grid[3][0]).toBeNull()
+})

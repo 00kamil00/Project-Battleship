@@ -7,10 +7,14 @@ class Gameboard {
         this.ships = []
     }
 
-    placeShip(length, x, y) {
+    placeShip(length, x, y, direction = 'horizontal') {
         const newShip = new Ship(length)
         for (let i = 0; i < length; i++) {
-            this.grid[y][x + i] = newShip
+            if (direction === 'horizontal') {
+                this.grid[y][x + i] = newShip
+            } else if (direction === 'vertical') {
+                this.grid[y + i][x] = newShip
+            }
         }
         this.ships.push(newShip)
     }

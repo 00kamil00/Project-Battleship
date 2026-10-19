@@ -42,7 +42,7 @@ A classic Battleship game built in vanilla JavaScript with a heavy focus on:
 
 - [x] Project setup (Webpack, Jest, tooling)
 - [x] `Ship` factory & unit tests
-- [ ] `Gameboard` logic & unit tests
+- [x] `Gameboard` logic & unit tests
 - [ ] `Player` setup (Human & Computer AI)
 - [ ] UI & DOM rendering
 - [ ] Live Deployment (GitHub Pages)

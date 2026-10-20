@@ -59,3 +59,11 @@ test('double shot to the same spot', () => {
     board.receiveAttack(5, 5)
     expect(board.missedAttacks).toHaveLength(1)
 })
+
+test('ignores repeated attacks on the same ship segment', () => {
+    const board = new Gameboard()
+    board.placeShip(2, 0, 0)
+    board.receiveAttack(0, 0)
+    board.receiveAttack(0, 0)
+    expect(board.allShipsSunk()).toBe(false)
+})

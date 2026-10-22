@@ -20,3 +20,11 @@ test('the player can attack enemy board', () => {
     player.attack(enemyBoard, 2, 3)
     expect(enemyBoard.missedAttacks).toHaveLength(1)
 })
+
+test('AI player makes a random attack on enemy board', () => {
+    const aiPlayer = new Player()
+    const enemyBoard = new Gameboard()
+    aiPlayer.randomAttack(enemyBoard)
+    const totalAttacks = enemyBoard.missedAttacks.length + enemyBoard.hitAttacks.length
+    expect(totalAttacks).toBe(1)
+})

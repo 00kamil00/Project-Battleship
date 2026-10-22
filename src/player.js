@@ -5,6 +5,10 @@ class Player {
         this.board = new Gameboard()
         this.type = type
     }
+
+    attack(gameboard, x, y) {
+        gameboard.receiveAttack(x, y)
+    }
 }
 
 

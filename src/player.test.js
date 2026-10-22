@@ -13,3 +13,10 @@ test('checks the player type', () => {
     expect(player.type).toBe('human')
     expect(aiPlayer.type).toBe('ai')
 })
+
+test('the player can attack enemy board', () => {
+    const player = new Player()
+    const enemyBoard = new Gameboard()
+    player.attack(enemyBoard, 2, 3)
+    expect(enemyBoard.missedAttacks).toHaveLength(1)
+})

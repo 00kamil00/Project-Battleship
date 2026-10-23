@@ -22,9 +22,19 @@ test('the player can attack enemy board', () => {
 })
 
 test('AI player makes a random attack on enemy board', () => {
-    const aiPlayer = new Player()
+    const aiPlayer = new Player('ai')
     const enemyBoard = new Gameboard()
     aiPlayer.randomAttack(enemyBoard)
     const totalAttacks = enemyBoard.missedAttacks.length + enemyBoard.hitAttacks.length
     expect(totalAttacks).toBe(1)
+})
+
+test('AI player makes a unique attack on enemy board', () => {
+    const aiPlayer = new Player('ai')
+    const enemyBoard = new Gameboard()
+    for (let i = 0; i < 100; i++) {
+        aiPlayer.randomAttack(enemyBoard)
+    }
+    const totalAttacks = enemyBoard.missedAttacks.length + enemyBoard.hitAttacks.length
+    expect(totalAttacks).toBe(100)
 })

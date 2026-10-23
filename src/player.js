@@ -11,8 +11,17 @@ class Player {
     }
 
     randomAttack(enemyBoard) {
-        const x = Math.floor(Math.random() * 10)
-        const y = Math.floor(Math.random() * 10)
+        let x = null
+        let y = null
+        while (true) {
+            x = Math.floor(Math.random() * 10)
+            y = Math.floor(Math.random() * 10)
+            const isAlreadyMissed = enemyBoard.missedAttacks.some(attack => attack[0] === x && attack[1] === y)
+            const isAlreadyHitted = enemyBoard.hitAttacks.some(attack => attack[0] === x && attack[1] === y)
+            if (!isAlreadyMissed && !isAlreadyHitted) {
+                break
+            } 
+        }
         enemyBoard.receiveAttack(x, y)
     }
 }

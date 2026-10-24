@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+#main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+
+    border: 2px solid red;
+    height: 100vh;
+}
+
+.gameboard {
+    border: 2px solid black;
+    width: clamp(200px, 25vw, 450px);
+    aspect-ratio: 1 / 1;
+}

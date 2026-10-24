@@ -15,7 +15,14 @@
 }
 
 .gameboard {
-    border: 2px solid black;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+
     width: clamp(200px, 25vw, 450px);
     aspect-ratio: 1 / 1;
+}
+
+.square {
+    border: 1px solid black;
 }

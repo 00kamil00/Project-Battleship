@@ -26,3 +26,25 @@
 .square {
     border: 1px solid black;
 }
+
+.square:hover {
+    transform: scale(1.1);
+    border: 2px solid blue;
+    background-color: rgb(238, 238, 238);
+}
+
+.square:active {
+    transform: scale(0.99);
+}
+
+.square.hitted {
+    background-color: green;
+}
+
+.square.notHitted {
+    background-color: red;
+}
+
+.square.disabled {
+    cursor: not-allowed;
+}

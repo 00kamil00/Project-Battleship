@@ -34,8 +34,10 @@ class Gameboard {
         if (this.grid[y][x] !== null) {
             this.grid[y][x].hit()
             this.hitAttacks.push([x, y])
+            return true
         } else {
             this.missedAttacks.push([x, y])
+            return false
         }
     }
 

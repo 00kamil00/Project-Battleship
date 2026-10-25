@@ -7,7 +7,7 @@ class Player {
     }
 
     attack(gameboard, x, y) {
-        gameboard.receiveAttack(x, y)
+        return gameboard.receiveAttack(x, y)
     }
 
     randomAttack(enemyBoard) {

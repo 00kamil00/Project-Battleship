@@ -14,15 +14,9 @@ function markSquare(square, isHit) {
     if (isHit === undefined) {
         return
     } else if (isHit) {
-<<<<<<< HEAD
-        square.classList.add('hitted')
-    } else if (!isHit) {
-        square.classList.add('notHitted')
-=======
         square.classList.add('hitted', 'disabled')
     } else if (!isHit) {
         square.classList.add('notHitted', 'disabled')
->>>>>>> 2648f52 (feat(ui): handle attack clicks and mark square states)
     } else {
         return
     }

@@ -15,10 +15,18 @@ const player = new Player()
 const aiPlayer = new Player('ai')
 aiPlayer.board.placeShip(2, 0, 0)
 
+
+let turn = 'player'
 const squares = secondBoard.querySelectorAll('.square')
+
 squares.forEach((square) => {
     square.addEventListener("click", () => {
-        const result = player.attack(aiPlayer.board, Number(square.dataset.x), Number(square.dataset.y))
-        markSquare(square, result)
+        if (turn === 'player') {
+            const result = player.attack(aiPlayer.board, Number(square.dataset.x), Number(square.dataset.y))
+            markSquare(square, result)
+            if (result === false) {
+                turn = 'ai'
+            }
+        }
     })
 })

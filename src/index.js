@@ -26,7 +26,19 @@ squares.forEach((square) => {
             markSquare(square, result)
             if (result === false) {
                 turn = 'ai'
+                playAiTurn()
             }
         }
     })
 })
+
+function playAiTurn() {
+    const { result, x, y} = aiPlayer.randomAttack(player.board)
+    const targetSquare = firstBoard.querySelector(`.square[data-x="${x}"][data-y="${y}"]`)
+    markSquare(targetSquare, result)
+    if (result === true) {
+        playAiTurn()
+    } else {
+        turn = 'player'
+    }
+}

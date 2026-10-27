@@ -22,7 +22,8 @@ class Player {
                 break
             } 
         }
-        enemyBoard.receiveAttack(x, y)
+        const result = enemyBoard.receiveAttack(x, y)
+        return { result, x, y}
     }
 }
 

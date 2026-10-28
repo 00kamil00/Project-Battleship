@@ -33,12 +33,14 @@ squares.forEach((square) => {
 })
 
 function playAiTurn() {
-    const { result, x, y} = aiPlayer.randomAttack(player.board)
-    const targetSquare = firstBoard.querySelector(`.square[data-x="${x}"][data-y="${y}"]`)
-    markSquare(targetSquare, result)
-    if (result === true) {
-        playAiTurn()
-    } else {
-        turn = 'player'
-    }
+    setTimeout(() => {
+        const { result, x, y} = aiPlayer.randomAttack(player.board)
+        const targetSquare = firstBoard.querySelector(`.square[data-x="${x}"][data-y="${y}"]`)
+        markSquare(targetSquare, result)
+        if (result === true) {
+            playAiTurn()
+        } else {
+            turn = 'player'
+        }
+    }, 600);
 }

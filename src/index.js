@@ -7,17 +7,21 @@ import { Gameboard } from "./gameboard.js"
 
 const firstBoard = document.getElementById('first-board')
 const secondBoard = document.getElementById('second-board')
+
 createBoard(firstBoard)
 createBoard(secondBoard)
 
+const statusBar = document.getElementById('status-bar')
+const squares = secondBoard.querySelectorAll('.square')
 
 const player = new Player()
 const aiPlayer = new Player('ai')
-aiPlayer.board.placeShip(2, 0, 0)
-
-
 let turn = 'player'
-const squares = secondBoard.querySelectorAll('.square')
+
+aiPlayer.board.placeShip(2, 0, 0)
+statusBar.textContent = 'Player turn'
+
+
 
 squares.forEach((square) => {
     square.addEventListener("click", () => {
@@ -26,11 +30,13 @@ squares.forEach((square) => {
             markSquare(square, result)
             if (result === true) {
                 if (aiPlayer.board.allShipsSunk()) {
+                    statusBar.textContent = 'Game Over! Player wins!'
                     turn = 'game-over'
                     return
                 }
             }
             if (result === false) {
+                statusBar.textContent = 'Ai turn'
                 turn = 'ai'
                 playAiTurn()
             }
@@ -45,11 +51,13 @@ function playAiTurn() {
         markSquare(targetSquare, result)
         if (result === true) {
             if (player.board.allShipsSunk()) {
+                statusBar.textContent = 'Game Over!, Ai wins!'
                 turn = 'game-over'
                 return
             }
             playAiTurn()
         } else {
+            statusBar.textContent = "Player turn"
             turn = 'player'
         }
     }, 600);

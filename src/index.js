@@ -24,6 +24,12 @@ squares.forEach((square) => {
         if (turn === 'player') {
             const result = player.attack(aiPlayer.board, Number(square.dataset.x), Number(square.dataset.y))
             markSquare(square, result)
+            if (result === true) {
+                if (aiPlayer.board.allShipsSunk()) {
+                    turn = 'game-over'
+                    return
+                }
+            }
             if (result === false) {
                 turn = 'ai'
                 playAiTurn()
@@ -38,6 +44,10 @@ function playAiTurn() {
         const targetSquare = firstBoard.querySelector(`.square[data-x="${x}"][data-y="${y}"]`)
         markSquare(targetSquare, result)
         if (result === true) {
+            if (player.board.allShipsSunk()) {
+                turn = 'game-over'
+                return
+            }
             playAiTurn()
         } else {
             turn = 'player'

@@ -9,6 +9,27 @@ class Gameboard {
     }
 
     placeShip(length, x, y, direction = 'horizontal') {
+        if (direction === 'horizontal') {
+            if (x + length > 10) {
+                return false
+            }
+        } else if (direction === 'vertical') {
+            if (y + length > 10) {
+                return false
+            }
+        }
+
+        for (let z = 0; z < length; z++) {
+            if (direction === 'horizontal') {
+                if (this.grid[y][x + z] !== null) {
+                    return false
+                }
+            } else if (direction === 'vertical') {
+                if (this.grid[y + z][x] !== null) {
+                    return false
+                }
+            }
+        }
         const newShip = new Ship(length)
         for (let i = 0; i < length; i++) {
             if (direction === 'horizontal') {
@@ -18,6 +39,7 @@ class Gameboard {
             }
         }
         this.ships.push(newShip)
+        return true
     }
 
     receiveAttack(x, y) {

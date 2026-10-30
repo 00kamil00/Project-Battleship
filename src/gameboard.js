@@ -71,6 +71,24 @@ class Gameboard {
         }
         return true
     }
+
+    generateRandomBoard() {
+        const shipsSet = [5, 4, 3, 3, 2]
+        shipsSet.forEach((item) => {
+            let shipCanBePlaced = false
+            while(shipCanBePlaced !== true) {
+                let x = Math.floor(Math.random() * 10)
+                let y = Math.floor(Math.random() * 10)
+                let direction = ''
+                if (Math.random() < 0.5) {
+                    direction = 'vertical'
+                } else {
+                    direction = 'horizontal'
+                }
+                shipCanBePlaced = this.placeShip(item, x, y, direction)
+            }
+        })
+    }
 }
 
 

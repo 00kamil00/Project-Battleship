@@ -18,7 +18,9 @@ const player = new Player()
 const aiPlayer = new Player('ai')
 let turn = 'player'
 
-aiPlayer.board.placeShip(2, 0, 0)
+aiPlayer.board.generateRandomBoard()
+// console.log(aiPlayer.board.ships.length)
+// console.log(aiPlayer.board.grid)
 statusBar.textContent = 'Player turn'
 
 

@@ -22,5 +22,12 @@ function markSquare(square, isHit) {
     }
 }
 
+function clearBoards(boardContainer) {
+    const squares = boardContainer.querySelectorAll('.square')
+    squares.forEach((square) => {
+        square.classList.remove('hitted', 'notHitted', 'disabled')
+    })
+}
 
-export { createBoard, markSquare }
+
+export { createBoard, markSquare, clearBoards }

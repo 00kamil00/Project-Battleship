@@ -1,5 +1,5 @@
 import "./styles.css"
-import { createBoard, markSquare } from "./ui.js"
+import { createBoard, markSquare, clearBoards } from "./ui.js"
 import { Player } from "./player.js"
 import { Gameboard } from "./gameboard.js"
 
@@ -13,17 +13,31 @@ createBoard(secondBoard)
 
 const statusBar = document.getElementById('status-bar')
 const squares = secondBoard.querySelectorAll('.square')
+const startBtn = document.getElementById('start-btn')
 
-const player = new Player()
-const aiPlayer = new Player('ai')
-let turn = 'player'
+let player = new Player()
+let aiPlayer = new Player('ai')
+let turn = 'none'
 
-aiPlayer.board.generateRandomBoard()
-// console.log(aiPlayer.board.ships.length)
-// console.log(aiPlayer.board.grid)
-statusBar.textContent = 'Player turn'
+statusBar.textContent = 'Start a game!'
 
+function startGame() {
+    player = new Player()
+    aiPlayer = new Player('ai')
+    turn = 'player'
+    statusBar.textContent = 'Player turn'
+    startBtn.textContent = 'Restart game'
+    player.board.generateRandomBoard()
+    aiPlayer.board.generateRandomBoard()
+    clearBoards(firstBoard)
+    clearBoards(secondBoard)
+}
 
+startBtn.addEventListener("click", () => {
+    startGame()
+    // console.log(player.board.grid)
+    // console.log(aiPlayer.board.grid)
+})
 
 squares.forEach((square) => {
     square.addEventListener("click", () => {

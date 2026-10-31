@@ -1,5 +1,5 @@
 import "./styles.css"
-import { createBoard, markSquare, clearBoards } from "./ui.js"
+import { createBoard, markSquare, clearBoards, showPlayerBoard } from "./ui.js"
 import { Player } from "./player.js"
 import { Gameboard } from "./gameboard.js"
 
@@ -22,15 +22,16 @@ let turn = 'none'
 statusBar.textContent = 'Start a game!'
 
 function startGame() {
+    clearBoards(firstBoard)
+    clearBoards(secondBoard)
     player = new Player()
     aiPlayer = new Player('ai')
+    player.board.generateRandomBoard()
+    aiPlayer.board.generateRandomBoard()
+    showPlayerBoard(firstBoard, player.board.grid)
     turn = 'player'
     statusBar.textContent = 'Player turn'
     startBtn.textContent = 'Restart game'
-    player.board.generateRandomBoard()
-    aiPlayer.board.generateRandomBoard()
-    clearBoards(firstBoard)
-    clearBoards(secondBoard)
 }
 
 startBtn.addEventListener("click", () => {

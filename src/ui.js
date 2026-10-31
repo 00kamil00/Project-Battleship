@@ -25,9 +25,20 @@ function markSquare(square, isHit) {
 function clearBoards(boardContainer) {
     const squares = boardContainer.querySelectorAll('.square')
     squares.forEach((square) => {
-        square.classList.remove('hitted', 'notHitted', 'disabled')
+        square.classList.remove('hitted', 'notHitted', 'disabled', 'player-ships')
+    })
+}
+
+function showPlayerBoard(playerBoardContainer, grid) {
+    grid.forEach((row, y) => {
+        row.forEach((cell, x) => {
+            if (cell !== null) {
+                const targetSquare = playerBoardContainer.querySelector(`.square[data-x="${x}"][data-y="${y}"]`)
+                targetSquare.classList.add('player-ships')
+            }
+        })
     })
 }
 
 
-export { createBoard, markSquare, clearBoards }
+export { createBoard, markSquare, clearBoards, showPlayerBoard }
